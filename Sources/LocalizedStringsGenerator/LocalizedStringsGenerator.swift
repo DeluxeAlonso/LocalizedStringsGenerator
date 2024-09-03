@@ -1,6 +1,6 @@
+@main
 public struct LocalizedStringsGenerator {
-    public private(set) var text = "Hello, World!"
-
-    public init() {
+    static func main() {
+        print("Hello world")
     }
 }
