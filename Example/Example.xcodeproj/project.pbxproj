@@ -95,6 +95,7 @@
 				E233D82E2C86D2530029BB27 /* Sources */,
 				E233D82F2C86D2530029BB27 /* Frameworks */,
 				E233D8302C86D2530029BB27 /* Resources */,
+				E233D8482C86D41D0029BB27 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -151,6 +152,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E233D8482C86D41D0029BB27 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./LocalizedStringsGenerator\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E233D82E2C86D2530029BB27 /* Sources */ = {
