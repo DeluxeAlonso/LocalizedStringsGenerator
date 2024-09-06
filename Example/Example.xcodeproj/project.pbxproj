@@ -19,7 +19,6 @@
 		E233D8372C86D2530029BB27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E233D8392C86D2540029BB27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E233D83C2C86D2540029BB27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E233D8442C86D2A60029BB27 /* LocalizedStringsGenerator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LocalizedStringsGenerator; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +35,6 @@
 		E233D8292C86D2530029BB27 = {
 			isa = PBXGroup;
 			children = (
-				E233D8432C86D2A60029BB27 /* Packages */,
 				E233D8342C86D2530029BB27 /* Example */,
 				E233D8332C86D2530029BB27 /* Products */,
 				E233D8452C86D2D30029BB27 /* Frameworks */,
@@ -68,14 +66,6 @@
 				E233D83C2C86D2540029BB27 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		E233D8432C86D2A60029BB27 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				E233D8442C86D2A60029BB27 /* LocalizedStringsGenerator */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		E233D8452C86D2D30029BB27 /* Frameworks */ = {
