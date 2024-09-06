@@ -11,6 +11,7 @@
 		E233D8382C86D2530029BB27 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E233D8372C86D2530029BB27 /* ContentView.swift */; };
 		E233D83A2C86D2540029BB27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E233D8392C86D2540029BB27 /* Assets.xcassets */; };
 		E233D83D2C86D2540029BB27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E233D83C2C86D2540029BB27 /* Preview Assets.xcassets */; };
+		E27460202C8ACEF900640AFC /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E274601F2C8ACEF900640AFC /* LocalizedStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		E233D8372C86D2530029BB27 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E233D8392C86D2540029BB27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E233D83C2C86D2540029BB27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E274601F2C8ACEF900640AFC /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				E233D8372C86D2530029BB27 /* ContentView.swift */,
 				E233D8392C86D2540029BB27 /* Assets.xcassets */,
 				E233D83B2C86D2540029BB27 /* Preview Content */,
+				E274601F2C8ACEF900640AFC /* LocalizedStrings.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -159,7 +162,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcrun --sdk macosx swiftc -parse-as-library Scripts/LocalizedStringsGenerator.swift -o CompiledScript\n./CompiledScript\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcrun --sdk macosx swiftc -parse-as-library Scripts/LocalizedStringsGenerator.swift -o CompiledScript\n./CompiledScript Example/LocalizedStrings.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E233D8382C86D2530029BB27 /* ContentView.swift in Sources */,
+				E27460202C8ACEF900640AFC /* LocalizedStrings.swift in Sources */,
 				E233D8362C86D2530029BB27 /* ExampleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
