@@ -34,24 +34,21 @@ public struct LocalizedStringsGenerator {
         return ""
     }
 
-    private static func findPath(for stringsFileName: String) -> String {
+    private static func findPath(for stringsFileName: String) -> URL? {
         let url = URL(fileURLWithPath: Bundle.main.bundlePath)
         var files = [URL]()
-        if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
-            for case let fileURL as URL in enumerator {
-                do {
-                    let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey])
-                    if fileAttributes.isRegularFile == true, fileURL.lastPathComponent.contains(stringsFileName) {
-                        files.append(fileURL)
-                    }
-                } catch { print(error, fileURL) }
-            }
-            print(files.first?.path)
-            print(files.first?.lastPathComponent)
-            print(files.first?.relativePath)
-            return files.first?.path ?? ""
+        guard let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) else {
+            return nil
         }
-        return ""
+        for case let fileURL as URL in enumerator {
+            do {
+                let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey])
+                if fileAttributes.isRegularFile == true, fileURL.lastPathComponent.contains(stringsFileName) {
+                    files.append(fileURL)
+                }
+            } catch { print(error, fileURL) }
+        }
+        return files.first
     }
 
     // MARK: - Utils
