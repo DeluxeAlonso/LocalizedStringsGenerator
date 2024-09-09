@@ -25,7 +25,6 @@ public struct LocalizedStringsGenerator {
         }
 
         extension Localizable where Self: RawRepresentable, Self.RawValue == String {
-
             var localized: String {
                 rawValue.localized(tableName: tableName)
             }
@@ -33,7 +32,17 @@ public struct LocalizedStringsGenerator {
             func callAsFunction() -> String {
                 localized
             }
+        }
+        """
 
+        let stringExtension =
+        """
+        extension String {
+            func localized(bundle: Bundle = .main,
+                           tableName: String = "Localizable",
+                           comment: String = "") -> String {
+                NSLocalizedString(self, tableName: tableName, value: self, comment: comment)
+            }
         }
         """
 
@@ -42,6 +51,8 @@ public struct LocalizedStringsGenerator {
         \(imports)
 
         \(localizableProtocol)
+
+        \(stringExtension)
         """
 
         do {
@@ -52,4 +63,7 @@ public struct LocalizedStringsGenerator {
         }
         
     }
+
+    // MARK: - Constants
+
 }

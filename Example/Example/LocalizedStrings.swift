@@ -6,7 +6,6 @@ protocol Localizable {
 }
 
 extension Localizable where Self: RawRepresentable, Self.RawValue == String {
-
     var localized: String {
         rawValue.localized(tableName: tableName)
     }
@@ -14,5 +13,12 @@ extension Localizable where Self: RawRepresentable, Self.RawValue == String {
     func callAsFunction() -> String {
         localized
     }
+}
 
+extension String {
+    func localized(bundle: Bundle = .main,
+                   tableName: String = "Localizable",
+                   comment: String = "") -> String {
+        NSLocalizedString(self, tableName: tableName, value: self, comment: comment)
+    }
 }
