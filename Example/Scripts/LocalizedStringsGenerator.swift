@@ -3,15 +3,12 @@ import Foundation
 @main
 public struct LocalizedStringsGenerator {
     static func main() {
-        print("Hello world")
         print(CommandLine.arguments[1])
         let filePath = CommandLine.arguments[1]
         createLocalizedStringsFile(filePath)
     }
 
     private static func createLocalizedStringsFile(_ filePath: String) {
-        let fileManager = FileManager.default
-
         let fileContentString =
         """
         \(imports)
@@ -23,7 +20,7 @@ public struct LocalizedStringsGenerator {
 
         do {
             try fileContentString.write(toFile: filePath, atomically: true, encoding: .utf8)
-            print("Token Extension is successfully generated:\n \(filePath)\n")
+            print("LocalizedString file successfully generated:\n \(filePath)\n")
         } catch {
             print(error)
         }
