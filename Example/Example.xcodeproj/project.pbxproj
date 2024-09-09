@@ -168,7 +168,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcrun --sdk macosx swiftc -parse-as-library Scripts/LocalizedStringsGenerator.swift -o CompiledScript\n./CompiledScript Example/LocalizedStrings.swift\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcrun --sdk macosx swiftc -parse-as-library Scripts/LocalizedStringsGenerator.swift -o CompiledScript\n./CompiledScript Example/LocalizedStrings.swift Localizable\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
