@@ -15,7 +15,7 @@ extension Localizable where Self: RawRepresentable, Self.RawValue == String {
     }
 }
 
-extension String {
+private extension String {
     func localized(bundle: Bundle = .main,
                    tableName: String = "Localizable",
                    comment: String = "") -> String {
