@@ -30,7 +30,15 @@ public struct LocalizedStringsGenerator {
     }
 
     private static func localizedStringsEnum(_ stringsFileName: String) -> String {
-        let localizableStringsFilePath = findPath(for: stringsFileName)
+        guard let localizableStringsFileURL = findPath(for: stringsFileName) else { return "" }
+
+            do {
+                let data = try String(contentsOfFile: localizableStringsFileURL.path, encoding: .utf8)
+                let myStrings = data.components(separatedBy: .newlines)
+                print(myStrings)
+            } catch {
+                print("Error: \(error)")
+            }
         return ""
     }
 
