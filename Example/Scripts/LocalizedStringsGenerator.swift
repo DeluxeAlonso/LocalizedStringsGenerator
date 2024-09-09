@@ -5,12 +5,10 @@ public struct LocalizedStringsGenerator {
     static func main() {
         print(CommandLine.arguments[1])
         print(CommandLine.arguments[2])
-        let filePath = CommandLine.arguments[1]
-        let stringsFileName = CommandLine.arguments[2]
-        createLocalizedStringsFile(filePath, stringsFileName)
+        createLocalizedStringsFile(filePath: CommandLine.arguments[1], stringsFileName: CommandLine.arguments[2])
     }
 
-    private static func createLocalizedStringsFile(_ filePath: String, _ stringsFileName: String) {
+    private static func createLocalizedStringsFile(filePath: String, stringsFileName: String) {
         let fileContentString =
         """
         \(imports)
@@ -18,6 +16,8 @@ public struct LocalizedStringsGenerator {
         \(localizableProtocol)
 
         \(stringExtension(stringsFileName))
+
+        \(localizedStringsEnum(stringsFileName))
         """
 
         do {
@@ -27,6 +27,31 @@ public struct LocalizedStringsGenerator {
             print(error)
         }
         
+    }
+
+    private static func localizedStringsEnum(_ stringsFileName: String) -> String {
+        let localizableStringsFilePath = findPath(for: stringsFileName)
+        return ""
+    }
+
+    private static func findPath(for stringsFileName: String) -> String {
+        let url = URL(fileURLWithPath: Bundle.main.bundlePath)
+        var files = [URL]()
+        if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
+            for case let fileURL as URL in enumerator {
+                do {
+                    let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey])
+                    if fileAttributes.isRegularFile == true, fileURL.lastPathComponent.contains(stringsFileName) {
+                        files.append(fileURL)
+                    }
+                } catch { print(error, fileURL) }
+            }
+            print(files.first?.path)
+            print(files.first?.lastPathComponent)
+            print(files.first?.relativePath)
+            return files.first?.path ?? ""
+        }
+        return ""
     }
 
     // MARK: - Utils
