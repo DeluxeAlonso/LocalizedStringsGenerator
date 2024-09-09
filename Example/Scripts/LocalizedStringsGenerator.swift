@@ -12,16 +12,40 @@ public struct LocalizedStringsGenerator {
     private static func createLocalizedStringsFile(_ filePath: String) {
         let fileManager = FileManager.default
 
+        let imports =
+        """
+        import Foundation
+        """
+
         let localizableProtocol =
         """
         protocol Localizable {
             var tableName: String { get }
             var localized: String { get }
         }
+
+        extension Localizable where Self: RawRepresentable, Self.RawValue == String {
+
+            var localized: String {
+                rawValue.localized(tableName: tableName)
+            }
+
+            func callAsFunction() -> String {
+                localized
+            }
+
+        }
+        """
+
+        let fileContentString =
+        """
+        \(imports)
+
+        \(localizableProtocol)
         """
 
         do {
-            try localizableProtocol.write(toFile: filePath, atomically: true, encoding: .utf8)
+            try fileContentString.write(toFile: filePath, atomically: true, encoding: .utf8)
             print("Token Extension is successfully generated:\n \(filePath)\n")
         } catch {
             print(error)
