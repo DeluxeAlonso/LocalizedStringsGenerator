@@ -33,8 +33,8 @@ public struct LocalizedStringsGenerator {
 
             do {
                 let data = try String(contentsOfFile: localizableStringsFileURL.path, encoding: .utf8)
-                let myStrings = data.components(separatedBy: .newlines)
-                print(myStrings)
+                let stringsLine = data.components(separatedBy: .newlines).filter { $0.contains(";") && $0.contains("=") }
+                print(stringsLine)
             } catch {
                 print("Error: \(error)")
             }
