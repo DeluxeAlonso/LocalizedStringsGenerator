@@ -26,7 +26,6 @@ public struct LocalizedStringsGenerator {
         } catch {
             print(error)
         }
-        
     }
 
     private static func localizedStringsEnum(_ stringsFileName: String) -> String {
