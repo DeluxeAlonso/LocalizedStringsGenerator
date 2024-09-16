@@ -40,11 +40,12 @@ public struct LocalizedStringsGenerator {
                     .map { $0?.replacingOccurrences(of: " ", with: "") }
                     .map { $0?.replacingOccurrences(of: "\"", with: "") }
                 print(stringsKeys)
-//                return """
-//                enum LocalizedStrings: String, Localizable {
-//                    \(enumCases)
-//                }
-//                """
+                let enumCases = stringsKeys.map { "case \($0!)" }
+                return """
+                enum LocalizedStrings: String, Localizable {
+                    \(enumCases.joined(separator: "\n"))
+                }
+                """
             } catch {
                 print("Error: \(error)")
             }
@@ -79,16 +80,15 @@ public struct LocalizedStringsGenerator {
     """
     protocol Localizable {
         var tableName: String { get }
-        var localized: String { get }
     }
 
     extension Localizable where Self: RawRepresentable, Self.RawValue == String {
-        var localized: String {
-            rawValue.localized(tableName: tableName)
+        var tableName: String {
+            "Localizable"
         }
 
         func callAsFunction() -> String {
-            localized
+            rawValue.localized(tableName: tableName)
         }
     }
     """

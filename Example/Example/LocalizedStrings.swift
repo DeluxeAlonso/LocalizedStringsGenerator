@@ -2,16 +2,15 @@ import Foundation
 
 protocol Localizable {
     var tableName: String { get }
-    var localized: String { get }
 }
 
 extension Localizable where Self: RawRepresentable, Self.RawValue == String {
-    var localized: String {
-        rawValue.localized(tableName: tableName)
+    var tableName: String {
+        "Localizable"
     }
 
     func callAsFunction() -> String {
-        localized
+        rawValue.localized(tableName: tableName)
     }
 }
 
@@ -23,3 +22,6 @@ private extension String {
     }
 }
 
+enum LocalizedStrings: String, Localizable {
+    case helloWorld
+}
