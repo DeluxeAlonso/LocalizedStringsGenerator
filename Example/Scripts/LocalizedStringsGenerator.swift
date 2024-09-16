@@ -84,7 +84,7 @@ public struct LocalizedStringsGenerator {
 
         extension Localizable where Self: RawRepresentable, Self.RawValue == String {
             var tableName: String {
-                "Localizable"
+                "\(stringsFileName)"
             }
 
             func callAsFunction() -> String {
