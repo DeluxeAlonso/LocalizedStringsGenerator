@@ -35,6 +35,16 @@ public struct LocalizedStringsGenerator {
                 let data = try String(contentsOfFile: localizableStringsFileURL.path, encoding: .utf8)
                 let stringsLine = data.components(separatedBy: .newlines).filter { $0.contains(";") && $0.contains("=") }
                 print(stringsLine)
+                let stringsKeys = stringsLine
+                    .compactMap { $0.split(separator: "=").first }
+                    .map { $0?.replacingOccurrences(of: " ", with: "") }
+                    .map { $0?.replacingOccurrences(of: "\"", with: "") }
+                print(stringsKeys)
+//                return """
+//                enum LocalizedStrings: String, Localizable {
+//                    \(enumCases)
+//                }
+//                """
             } catch {
                 print("Error: \(error)")
             }
