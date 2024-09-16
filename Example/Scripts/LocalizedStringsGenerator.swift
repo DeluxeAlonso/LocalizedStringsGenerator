@@ -13,9 +13,9 @@ public struct LocalizedStringsGenerator {
         """
         \(imports)
 
-        \(localizableProtocol)
+        \(localizableProtocol(stringsFileName))
 
-        \(stringExtension(stringsFileName))
+        \(stringExtension)
 
         \(localizedStringsEnum(stringsFileName))
         """
@@ -76,24 +76,25 @@ public struct LocalizedStringsGenerator {
     import Foundation
     """
 
-    static let localizableProtocol =
-    """
-    protocol Localizable {
-        var tableName: String { get }
-    }
-
-    extension Localizable where Self: RawRepresentable, Self.RawValue == String {
-        var tableName: String {
-            "Localizable"
+    static func localizableProtocol(_ stringsFileName: String) -> String {
+        """
+        protocol Localizable {
+            var tableName: String { get }
         }
 
-        func callAsFunction() -> String {
-            rawValue.localized(tableName: tableName)
-        }
-    }
-    """
+        extension Localizable where Self: RawRepresentable, Self.RawValue == String {
+            var tableName: String {
+                "Localizable"
+            }
 
-    static func stringExtension(_ stringsFileName: String) -> String {
+            func callAsFunction() -> String {
+                rawValue.localized(tableName: tableName)
+            }
+        }
+        """
+    }
+
+    static let stringExtension: String =
         """
         private extension String {
             func localized(bundle: Bundle = .main,
@@ -103,5 +104,4 @@ public struct LocalizedStringsGenerator {
             }
         }
         """
-    }
 }
