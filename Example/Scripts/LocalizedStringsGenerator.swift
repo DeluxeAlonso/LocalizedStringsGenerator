@@ -30,25 +30,24 @@ public struct LocalizedStringsGenerator {
 
     private static func localizedStringsEnum(_ stringsFileName: String) -> String {
         guard let localizableStringsFileURL = findPath(for: stringsFileName) else { return "" }
-
-            do {
-                let data = try String(contentsOfFile: localizableStringsFileURL.path, encoding: .utf8)
-                let stringsLine = data.components(separatedBy: .newlines).filter { $0.contains(";") && $0.contains("=") }
-                print(stringsLine)
-                let stringsKeys = stringsLine
-                    .compactMap { $0.split(separator: "=").first }
-                    .map { $0?.replacingOccurrences(of: " ", with: "") }
-                    .map { $0?.replacingOccurrences(of: "\"", with: "") }
-                print(stringsKeys)
-                let enumCases = stringsKeys.map { "case \($0!)" }
-                return """
+        do {
+            let data = try String(contentsOfFile: localizableStringsFileURL.path, encoding: .utf8)
+            let stringsLine = data.components(separatedBy: .newlines).filter { $0.contains(";") && $0.contains("=") }
+            print(stringsLine)
+            let stringsKeys = stringsLine
+                .compactMap { $0.split(separator: "=").first }
+                .map { $0?.replacingOccurrences(of: " ", with: "") }
+                .map { $0?.replacingOccurrences(of: "\"", with: "") }
+            print(stringsKeys)
+            let enumCases = stringsKeys.map { "case \($0!)" }
+            return """
                 enum LocalizedStrings: String, Localizable {
                     \(enumCases.joined(separator: "\n"))
                 }
                 """
-            } catch {
-                print("Error: \(error)")
-            }
+        } catch {
+            print("Error: \(error)")
+        }
         return ""
     }
 
