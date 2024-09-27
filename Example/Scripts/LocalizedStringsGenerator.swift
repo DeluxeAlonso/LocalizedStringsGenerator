@@ -42,7 +42,7 @@ public struct LocalizedStringsGenerator {
             let enumCases = stringsKeys.map { "case \($0!)" }
             return """
                 enum LocalizedStrings: String, Localizable {
-                    \(enumCases.joined(separator: "\n"))
+                    \(enumCases.joined(separator: "\n\t"))
                 }
                 """
         } catch {
