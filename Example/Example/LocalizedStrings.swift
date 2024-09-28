@@ -1,3 +1,7 @@
+//
+// Auto-generated code. Do not modify this file manually.
+//
+
 import Foundation
 
 protocol Localizable {

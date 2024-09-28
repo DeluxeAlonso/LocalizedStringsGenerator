@@ -11,6 +11,10 @@ public struct LocalizedStringsGenerator {
     private static func createLocalizedStringsFile(filePath: String, stringsFileName: String) {
         let fileContentString =
         """
+        //
+        // Auto-generated code. Do not modify this file manually.
+        //
+
         \(imports)
 
         \(localizableProtocol(stringsFileName))
