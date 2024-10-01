@@ -25,7 +25,7 @@ public struct LocalizedStringsGenerator {
 
         do {
             try fileContentString.write(toFile: filePath, atomically: true, encoding: .utf8)
-            print("LocalizedString file successfully generated:\n \(filePath)\n")
+            print("LocalizedStrings file successfully generated:\n \(filePath)\n")
         } catch {
             print(error)
         }
