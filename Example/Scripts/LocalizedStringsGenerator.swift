@@ -3,8 +3,6 @@ import Foundation
 @main
 public struct LocalizedStringsGenerator {
     static func main() {
-        print(CommandLine.arguments[1])
-        print(CommandLine.arguments[2])
         createLocalizedStringsFile(filePath: CommandLine.arguments[1], stringsFileName: CommandLine.arguments[2])
     }
 
