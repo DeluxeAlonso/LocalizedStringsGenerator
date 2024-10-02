@@ -40,7 +40,6 @@ public struct LocalizedStringsGenerator {
                 .compactMap { $0.split(separator: "=").first }
                 .map { $0?.replacingOccurrences(of: " ", with: "") }
                 .map { $0?.replacingOccurrences(of: "\"", with: "") }
-            print(stringsKeys)
             let enumCases = stringsKeys.map { "case \($0!)" }
             return """
                 enum LocalizedStrings: String, Localizable {
