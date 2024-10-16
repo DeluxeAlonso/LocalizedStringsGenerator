@@ -14,6 +14,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text(LocalizedStrings.helloWorld())
+            Text(LocalizedStrings.hello_World())
             Text(LocalizedStrings.byeWorld())
             Text(LocalizedStrings.bye_world())
         }

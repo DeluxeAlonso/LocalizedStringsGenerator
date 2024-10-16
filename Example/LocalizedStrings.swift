@@ -28,6 +28,7 @@ private extension String {
 
 enum LocalizedStrings: String, Localizable {
     case helloWorld
+	case hello_World
 	case byeWorld
 	case bye_world
 }

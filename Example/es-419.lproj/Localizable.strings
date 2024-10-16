@@ -7,5 +7,6 @@
 */
 
 "helloWorld" = "Hola Mundo";
+"hello_World" = "Hola_Mundo";
 "byeWorld" = "Adiós Mundo";
 "bye_world" = "Adiós_Mundo";
